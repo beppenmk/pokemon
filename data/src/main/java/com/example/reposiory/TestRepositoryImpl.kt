@@ -4,12 +4,13 @@ import com.example.datasource.RemoteDataSource
 import com.example.entity.TestEntity
 import com.example.repository.TestRepository
 
-class TestRepositoyImpl(
+class TestRepositoryImpl(
     private var remoteDataSource: RemoteDataSource
 ) : TestRepository {
 
     override fun getTest(): Any {
-        return  TestEntity()
+        //remoteDataSource.getData()
+        return  TestEntity(response ="TEST ")
     }
 
 

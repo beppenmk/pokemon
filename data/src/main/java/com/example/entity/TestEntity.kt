@@ -1,5 +1,7 @@
 package com.example.entity
 
-open class TestEntity {
+open class TestEntity(
     var response: String? = null
+) {
+
 }
