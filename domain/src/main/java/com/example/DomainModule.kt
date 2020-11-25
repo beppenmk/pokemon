@@ -6,9 +6,8 @@ import org.koin.dsl.module
 
 val domainModule = module {
 
-}
-
-
-val useCaseModule = module {
+    //USECASE
     factory { GetTestUseCase(get()) }
 }
+
+
