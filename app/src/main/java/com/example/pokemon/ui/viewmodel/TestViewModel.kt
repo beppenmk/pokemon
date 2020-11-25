@@ -1,16 +1,27 @@
 package com.example.pokemon.ui.viewmodel
 
-import android.util.Log
-import androidx.lifecycle.ViewModel
+
+import com.example.entity.TestEntity
+import com.example.pokemon.ui.state.TestState
 import com.example.usecase.GetTestUseCase
+import io.uniflow.androidx.flow.AndroidDataFlow
+import io.uniflow.core.flow.data.UIState
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+
+@OptIn(ExperimentalCoroutinesApi::class)
 class TestViewModel(
-   private val getTestUseCase: GetTestUseCase
-) : ViewModel() {
+    private val getTestUseCase: GetTestUseCase,
 
-    fun getTest(): Any {
-        var response = getTestUseCase.invoke()
-        Log.d("TAG", "TEST=>$response")
-        return   response
+    ) : AndroidDataFlow(defaultState = UIState.Empty) {
+
+
+
+    fun getTest() = action {
+        var response = getTestUseCase.invoke() as TestEntity
+        setState { TestState(name = response.name ?: "") }
     }
+
+
+
 }
