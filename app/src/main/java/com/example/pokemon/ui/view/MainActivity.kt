@@ -4,19 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.lifecycle.lifecycleScope
 import com.example.pokemon.R
-import com.example.pokemon.ui.state.TestState
-import com.example.pokemon.ui.viewmodel.TestViewModel
+import com.example.pokemon.ui.state.PokemonState
+import com.example.pokemon.ui.viewmodel.PokemonViewModel
 import io.uniflow.androidx.flow.onStates
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.getViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var testViewModel: TestViewModel
+    private lateinit var testViewModel: PokemonViewModel
     private lateinit var testBtn: Button
     private lateinit var nameTv: TextView
 
@@ -31,12 +27,13 @@ class MainActivity : AppCompatActivity() {
 
         onStates(testViewModel) { state ->
             when (state) {
-                is TestState -> nameTv.text = state.name
+                is PokemonState -> nameTv.text = state.name
             }
         }
 
         testBtn.setOnClickListener {
-            testViewModel.getTest()
+
+            testViewModel.getPokemonList()
 
         }
 

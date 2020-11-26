@@ -1,10 +1,15 @@
 package com.example.pokemon.datasource
 
 import com.example.datasource.RemoteDataSource
+import com.example.entity.PokemonEntity
+import com.example.pokemon.api.PokemonApi
 
-class RemoteDataSourceImpl :RemoteDataSource{
-    override fun getData(): Any {
-        TODO("Not yet implemented")
+class RemoteDataSourceImpl(
+    private val pokemonApi: PokemonApi
+) : RemoteDataSource {
+    override suspend fun getPokemonList(): List<PokemonEntity> {
+        val _pokemonResponse = pokemonApi.getPokenonList()
+        return _pokemonResponse.results
     }
 
 }

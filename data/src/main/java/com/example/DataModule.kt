@@ -1,14 +1,13 @@
 package com.example
 
-import com.example.datasource.RemoteDataSource
-import com.example.reposiory.TestRepositoryImpl
-import com.example.repository.TestRepository
+import com.example.reposiory.PokemonRepositoryImpl
+import com.example.repository.PokemonRepository
 import org.koin.dsl.module
 
 val dataModule = module {
 
-    factory<TestRepository> {
-        TestRepositoryImpl(get())
+    factory<PokemonRepository> {
+        PokemonRepositoryImpl(get())
     }
 
 

@@ -16,7 +16,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        buildConfigField "String", "API_URL", "\"https://pokeapi.co/api/v2/\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -56,4 +56,14 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
     implementation  "io.uniflow:uniflow-androidx:$uniflow_version"
     testImplementation "io.uniflow:uniflow-androidx-test:$uniflow_version"
+
+    implementation("com.squareup.moshi:moshi:1.11.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.9.1")
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+
+    //network
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation "com.squareup.okhttp3:okhttp:4.9.0"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
 }
