@@ -1,23 +1,18 @@
-package com.example.pokemon.ui.view
+package com.example.pokemon.ui.view.pokemon
 
 import PokemonAdapter
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemon.R
-import com.example.pokemon.ui.state.PokemonState
 import com.example.pokemon.ui.viewmodel.PokemonViewModel
-import io.uniflow.androidx.flow.onStates
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-class MainActivity : AppCompatActivity() {
+class PokemonListActivity : AppCompatActivity() {
 
     private lateinit var testViewModel: PokemonViewModel
 
