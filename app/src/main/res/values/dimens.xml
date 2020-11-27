@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="half_standard_distance">8dp</dimen>
+    <dimen name="standard_distance">16dp</dimen>
+    <dimen name="double_standard_distance">32dp</dimen>
+    <dimen name="standard_padding">34dp</dimen>
+    <dimen name="standard_padding_bottom">22dp</dimen>
+
+
+
+
+
+
+</resources>
