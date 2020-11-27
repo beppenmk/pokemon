@@ -6,10 +6,7 @@
     <dimen name="double_standard_distance">32dp</dimen>
     <dimen name="standard_padding">34dp</dimen>
     <dimen name="standard_padding_bottom">22dp</dimen>
-
-
-
-
+    <dimen name="fab_margin">16dp</dimen>
 
 
 </resources>
