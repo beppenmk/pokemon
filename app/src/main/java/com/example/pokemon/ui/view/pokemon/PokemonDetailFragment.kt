@@ -12,11 +12,14 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 
 import com.example.pokemon.R
+import com.example.pokemon.ui.viewmodel.PokemonViewModel
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
 class PokemonDetailFragment : Fragment() {
 
     private lateinit var actionbar: ActionBar
+    private lateinit var pokemonViewModel: PokemonViewModel
     val args: PokemonDetailFragmentArgs by navArgs()
 
 
@@ -28,11 +31,15 @@ class PokemonDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        pokemonViewModel = getViewModel()
         actionbar.show()
         actionbar.setDisplayHomeAsUpEnabled(true)
         args.name?.let{
             actionbar.title = it.capitalize()
+            pokemonViewModel.getPokemonDetail(it)
         }
+
+
 
     }
 

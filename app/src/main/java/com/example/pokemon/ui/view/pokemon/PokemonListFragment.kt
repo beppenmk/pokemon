@@ -25,7 +25,7 @@ class PokemonListFragment : Fragment() {
 
     private lateinit var pokemonRv: RecyclerView
     private lateinit var actionbar: ActionBar
-    private lateinit var testViewModel: PokemonViewModel
+    private lateinit var pokemonViewModel: PokemonViewModel
     private lateinit var navController: NavController
 
     private var pokemonAdapter: PokemonAdapter = PokemonAdapter()
@@ -38,7 +38,7 @@ class PokemonListFragment : Fragment() {
         actionbar.setDisplayHomeAsUpEnabled(false)
         actionbar.title = getString(R.string.pokemon_list)
 
-        testViewModel = getViewModel()
+        pokemonViewModel = getViewModel()
         pokemonRv.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = pokemonAdapter
@@ -53,7 +53,7 @@ class PokemonListFragment : Fragment() {
         }
 
         this.lifecycle.coroutineScope.launch {
-            testViewModel.list.collectLatest {
+            pokemonViewModel.list.collectLatest {
                 pokemonAdapter.submitData(it)
             }
         }

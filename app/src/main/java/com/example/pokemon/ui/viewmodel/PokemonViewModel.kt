@@ -8,6 +8,7 @@ import com.example.pokemon.datasource.PokemonDataSource
 import com.example.entity.PokemonEntity
 import com.example.pokemon.api.PokemonApi
 import com.example.pokemon.ui.state.PokemonState
+import com.example.usecase.GetPokemonDetailUseCase
 import com.example.usecase.GetPokemonListUseCase
 import io.uniflow.androidx.flow.AndroidDataFlow
 import io.uniflow.core.flow.data.UIState
@@ -19,6 +20,7 @@ import org.koin.experimental.property.inject
 @OptIn(ExperimentalCoroutinesApi::class)
 class PokemonViewModel(
     private val getPokemonListUseCase: GetPokemonListUseCase,
+    private val getPokemonDetailUseCase: GetPokemonDetailUseCase,
     private val pokemonApi: PokemonApi
 ) : AndroidDataFlow(defaultState = UIState.Empty) {
 
@@ -29,6 +31,12 @@ class PokemonViewModel(
         val list = getPokemonListUseCase.invoke(pageSize = VIEW_IN_PAGE)
         setState { PokemonState(name = list.first().name ?: "") }
     }
+
+    fun getPokemonDetail(name:String) = action {
+        val pokemon = getPokemonDetailUseCase.invoke( name = name)
+        setState { PokemonState(name = pokemon.name ?: "") }
+    }
+
 
 
     val list: Flow<PagingData<PokemonEntity>> = Pager(
