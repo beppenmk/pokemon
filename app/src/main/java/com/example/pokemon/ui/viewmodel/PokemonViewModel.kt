@@ -28,15 +28,14 @@ class PokemonViewModel(
 
 
     fun getPokemonList() = action {
-        val list = getPokemonListUseCase.invoke(pageSize = VIEW_IN_PAGE)
-        setState { PokemonState(name = list.first().name ?: "") }
+        //val list = getPokemonListUseCase.invoke(pageSize = VIEW_IN_PAGE)
+        //setState { PokemonState(name = list.first().name ?: "") }
     }
 
-    fun getPokemonDetail(name:String) = action {
-        val pokemon = getPokemonDetailUseCase.invoke( name = name)
-        setState { PokemonState(name = pokemon.name ?: "") }
+    fun getPokemonDetail(name: String) = action {
+        val pokemon = getPokemonDetailUseCase.invoke(name = name)
+        setState { PokemonState(value = pokemon) }
     }
-
 
 
     val list: Flow<PagingData<PokemonEntity>> = Pager(
