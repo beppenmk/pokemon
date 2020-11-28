@@ -9,6 +9,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 
 import com.example.pokemon.R
 
@@ -16,6 +17,7 @@ import com.example.pokemon.R
 class PokemonDetailFragment : Fragment() {
 
     private lateinit var actionbar: ActionBar
+    val args: PokemonDetailFragmentArgs by navArgs()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +30,10 @@ class PokemonDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         actionbar.show()
         actionbar.setDisplayHomeAsUpEnabled(true)
-          actionbar.title = getString(R.string.pokemon_detail)
+        args.name?.let{
+            actionbar.title = it.capitalize()
+        }
+
     }
 
 

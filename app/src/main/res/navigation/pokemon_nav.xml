@@ -32,5 +32,10 @@
         android:id="@+id/pokemonDetailFragment"
         android:name="com.example.pokemon.ui.view.pokemon.PokemonDetailFragment"
         android:label="pokemon_detail_fragment"
-        tools:layout="@layout/pokemon_detail_fragment" />
+        tools:layout="@layout/pokemon_detail_fragment" >
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

@@ -27,8 +27,7 @@ class PokemonListFragment : Fragment() {
     private lateinit var actionbar: ActionBar
     private lateinit var testViewModel: PokemonViewModel
     private lateinit var navController: NavController
-    private val actionToPokemonDetail: NavDirections =
-        PokemonListFragmentDirections.actionPokemonListFragmentToPokemonDetailFragment()
+
     private var pokemonAdapter: PokemonAdapter = PokemonAdapter()
 
 
@@ -46,6 +45,10 @@ class PokemonListFragment : Fragment() {
         }
 
         pokemonAdapter.onItemClickListener = { pokemon ->
+            val actionToPokemonDetail: NavDirections =
+                PokemonListFragmentDirections.actionPokemonListFragmentToPokemonDetailFragment(
+                    pokemon.name
+                )
             navController.navigate(actionToPokemonDetail)
         }
 
