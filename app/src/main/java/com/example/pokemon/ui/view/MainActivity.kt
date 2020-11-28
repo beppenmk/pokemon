@@ -1,12 +1,15 @@
 package com.example.pokemon.ui.view
-
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.pokemon.R
+
 
 class MainActivity : AppCompatActivity() {
 
