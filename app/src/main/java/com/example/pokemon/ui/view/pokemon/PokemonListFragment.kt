@@ -5,12 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.coroutineScope
-import androidx.navigation.Navigation
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemon.R
@@ -23,15 +24,17 @@ import org.koin.androidx.viewmodel.ext.android.getViewModel
 class PokemonListFragment : Fragment() {
 
     private lateinit var pokemonRv: RecyclerView
-    private var pokemonAdapter: PokemonAdapter = PokemonAdapter()
     private lateinit var actionbar: ActionBar
     private lateinit var testViewModel: PokemonViewModel
-
+    private lateinit var navController: NavController
+    private val actionToPokemonDetail: NavDirections =
+        PokemonListFragmentDirections.actionPokemonListFragmentToPokemonDetailFragment()
+    private var pokemonAdapter: PokemonAdapter = PokemonAdapter()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        navController = view.findNavController()
         actionbar.show()
         actionbar.setDisplayHomeAsUpEnabled(false)
         actionbar.title = getString(R.string.pokemon_list)
@@ -43,10 +46,7 @@ class PokemonListFragment : Fragment() {
         }
 
         pokemonAdapter.onItemClickListener = { pokemon ->
-            Navigation.findNavController(view).navigate(
-                R.id.action_pokemonListFragment_to_pokemonDetailFragment
-            )
-
+            navController.navigate(actionToPokemonDetail)
         }
 
         this.lifecycle.coroutineScope.launch {

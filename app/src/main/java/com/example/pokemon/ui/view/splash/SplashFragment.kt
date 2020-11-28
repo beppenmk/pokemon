@@ -9,7 +9,10 @@ import android.view.animation.Animation
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.example.pokemon.R
 
 
@@ -17,10 +20,13 @@ class SplashFragment : Fragment() {
 
 
     private lateinit var splashIv: ImageView
-
+    private lateinit var navController: NavController
+    private val actionToPokemonList: NavDirections =
+        SplashFragmentDirections.actionSplashFragmentToPokemonListFragment()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = view.findNavController()
         val alphaAnimation = AlphaAnimation(0.0f, 1.0f)
         alphaAnimation.duration = 4000
         alphaAnimation.fillAfter = true
@@ -30,10 +36,7 @@ class SplashFragment : Fragment() {
             }
 
             override fun onAnimationEnd(p0: Animation?) {
-
-                Navigation.findNavController(view).navigate(
-                    R.id.action_splashFragment_to_pokemonListFragment
-                )
+                navController.navigate(actionToPokemonList)
             }
 
             override fun onAnimationStart(p0: Animation?) {
@@ -51,6 +54,7 @@ class SplashFragment : Fragment() {
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
         val view = inflater.inflate(R.layout.splash_fragment, container, false)
         splashIv = view.findViewById(R.id.splash_iv)
+
         return view
     }
 
