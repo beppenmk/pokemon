@@ -9,27 +9,32 @@ import com.example.entity.PokemonEntity
 import com.example.pokemon.R
 
 class PokemonAdapter :
-    PagingDataAdapter<PokemonEntity, PokemonAdapter.MovieViewHolder>(MovieComparator) {
+    PagingDataAdapter<PokemonEntity, PokemonAdapter.PokemonViewHolder>(PokemonComparator) {
 
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+    var onItemClickListener: (PokemonEntity) -> Unit = {}
+
+    override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
 
         val view: View = holder.itemView
         val nameTv: TextView = view.findViewById(R.id.name_tv)
-        getItem(position)?.let {
-            nameTv.text = it.name
+        getItem(position)?.let { pokemon ->
+            nameTv.text = pokemon.name
+            view.setOnClickListener {
+                onItemClickListener(pokemon)
+            }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        return MovieViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
+        return PokemonViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.pokemon_item, parent, false)
         )
     }
 
-    class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    class PokemonViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
-    object MovieComparator : DiffUtil.ItemCallback<PokemonEntity>() {
+    object PokemonComparator : DiffUtil.ItemCallback<PokemonEntity>() {
         override fun areItemsTheSame(oldItem: PokemonEntity, newItem: PokemonEntity): Boolean {
             // name is unique.
             return oldItem.name == newItem.name

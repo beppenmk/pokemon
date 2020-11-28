@@ -30,7 +30,7 @@ class SplashFragment : Fragment() {
             }
 
             override fun onAnimationEnd(p0: Animation?) {
-                (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+
                 Navigation.findNavController(view).navigate(
                     R.id.action_splashFragment_to_pokemonListFragment
                 )
