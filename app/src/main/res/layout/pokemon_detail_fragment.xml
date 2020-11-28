@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="pokemon"
             type="com.example.entity.PokemonEntity" />
@@ -89,6 +88,30 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/label_weight_tv"
             tools:text="1" />
+
+        <TextView
+            android:id="@+id/label_stats_tv"
+            style="@style/label_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/label_stats"
+            app:layout_constraintTop_toBottomOf="@+id/image_iv" />
+
+<!--
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/stats_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:items="@{stat}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label_stats_tv"
+            tools:listitem="@layout/sats_item" />
+-->
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

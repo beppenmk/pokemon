@@ -18,6 +18,7 @@ open class PokemonEntity(
     val moves: List<Move> = emptyList(),
     val species: Species? = null,
     val sprites: Sprites? = null,
+    val stats: List<Stats> = emptyList(),
     val types: List<Types> = emptyList(),
 
 
@@ -81,6 +82,18 @@ data class DreamWorld(
     @Json(name = "front_female") val front_female: String? = null
 )
 
+@JsonClass(generateAdapter = true)
+data class Stats(
+    @Json(name = "base_stat") val baseStat: Int,
+    val effort: Int,
+    val stat: Stat
+)
+
+@JsonClass(generateAdapter = true)
+data class Stat(
+    val name: String? = null,
+    val url: String? = null
+)
 @JsonClass(generateAdapter = true)
 data class Types(
     val slot: Int? = null,
