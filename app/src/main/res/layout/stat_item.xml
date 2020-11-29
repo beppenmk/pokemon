@@ -6,6 +6,10 @@
     >
     <data>
         <variable
+            name="effort"
+            type="String" />
+
+        <variable
             name="stat"
             type="com.example.entity.Stat" />
     </data>
@@ -31,8 +35,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="name" />
-
-
+        <TextView
+            android:id="@+id/effort_tv"
+            style="@style/list_item_text_small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{effort}"
+            app:layout_constraintBottom_toBottomOf="@+id/name_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/name_tv"
+            tools:text="name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

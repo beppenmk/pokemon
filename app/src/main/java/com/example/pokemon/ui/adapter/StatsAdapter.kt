@@ -42,6 +42,7 @@ open class StatsAdapter : RecyclerView.Adapter<StatsAdapter.StatViewHolder>() {
 
         fun bind(stats: Stats) {
             binding.stat = stats.stat
+            binding.effort = stats.effort.toString()
             binding.executePendingBindings()
         }
     }
