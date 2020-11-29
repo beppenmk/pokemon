@@ -1,43 +1,34 @@
 package com.example.pokemon.ui.view
-
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Typeface
 import android.os.Bundle
-import android.widget.Button
+import android.view.MenuItem
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import com.example.pokemon.R
-import com.example.pokemon.ui.state.PokemonState
-import com.example.pokemon.ui.viewmodel.PokemonViewModel
-import io.uniflow.androidx.flow.onStates
-import org.koin.androidx.viewmodel.ext.android.getViewModel
+
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var testViewModel: PokemonViewModel
-    private lateinit var testBtn: Button
-    private lateinit var nameTv: TextView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.main_activity)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        testViewModel = getViewModel()
-        testBtn = findViewById(R.id.test_btn)
-        nameTv = findViewById(R.id.name_tv)
-
-
-        onStates(testViewModel) { state ->
-            when (state) {
-                is PokemonState -> nameTv.text = state.name
-            }
-        }
-
-        testBtn.setOnClickListener {
-
-            testViewModel.getPokemonList()
-
-        }
-
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
 
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            onBackPressed()
+            return true
+        }
+        return true
+    }
 }

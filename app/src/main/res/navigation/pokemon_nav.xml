@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pogemon_nav"
+    app:startDestination="@id/splashFragment">
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.pokemon.ui.view.splash.SplashFragment"
+        android:label="splash_fragment"
+        tools:layout="@layout/splash_fragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_pokemonListFragment"
+            app:destination="@id/pokemonListFragment"
+            app:popUpTo="@id/pogemon_nav" />
+    </fragment>
+    <fragment
+        android:id="@+id/pokemonListFragment"
+        android:name="com.example.pokemon.ui.view.pokemon.PokemonListFragment"
+        android:label="pokemon_list_fragment"
+        tools:layout="@layout/pokemon_list_fragment" >
+        <action
+            android:id="@+id/action_pokemonListFragment_to_pokemonDetailFragment"
+            app:destination="@id/pokemonDetailFragment"
+            app:popUpTo="@id/pokemonListFragment"
+            app:enterAnim="@anim/enter_from_right_slide"
+            app:exitAnim="@anim/exit_left_slide"
+            app:popEnterAnim="@anim/enter_from_left_slide"
+            app:popExitAnim="@anim/exit_right_slide" />
+    </fragment>
+    <fragment
+        android:id="@+id/pokemonDetailFragment"
+        android:name="com.example.pokemon.ui.view.pokemon.PokemonDetailFragment"
+        android:label="pokemon_detail_fragment"
+        tools:layout="@layout/pokemon_detail_fragment" >
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+</navigation>

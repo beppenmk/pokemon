@@ -12,4 +12,9 @@ class RemoteDataSourceImpl(
         return _pokemonResponse.results
     }
 
+    override suspend fun getPokemonDetail(name: String): PokemonEntity {
+        val _pokemonResponse = pokemonApi.getPokenonDetail(name)
+        return _pokemonResponse
+    }
+
 }
