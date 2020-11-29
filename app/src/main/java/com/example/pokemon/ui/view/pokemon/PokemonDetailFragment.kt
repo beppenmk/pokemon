@@ -16,6 +16,7 @@ import com.example.entity.PokemonEntity
 import com.example.pokemon.R
 import com.example.pokemon.databinding.PokemonDetailFragmentBinding
 import com.example.pokemon.ui.adapter.StatsAdapter
+import com.example.pokemon.ui.adapter.TypeAdapter
 import com.example.pokemon.ui.state.PokemonState
 import com.example.pokemon.ui.viewmodel.PokemonViewModel
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
@@ -30,7 +31,9 @@ class PokemonDetailFragment : Fragment() {
     private lateinit var binding: PokemonDetailFragmentBinding
     private lateinit var imageIv: ImageView
     private lateinit var statRecyclerView: RecyclerView
+    private lateinit var typeRecyclerView: RecyclerView
     private val statAdapter = StatsAdapter()
+    private val typeAdapter = TypeAdapter()
     val args: PokemonDetailFragmentArgs by navArgs()
 
 
@@ -73,6 +76,9 @@ class PokemonDetailFragment : Fragment() {
         imageIv = view.findViewById(R.id.image_iv)
         statRecyclerView = view.findViewById(R.id.stats_rv)
         statRecyclerView.adapter = statAdapter
+
+        typeRecyclerView = view.findViewById(R.id.types_rv)
+        typeRecyclerView.adapter = typeAdapter
         return view
     }
 
@@ -90,6 +96,7 @@ class PokemonDetailFragment : Fragment() {
                 .load(Uri.parse(it), imageIv);
         }
         statAdapter.mData = pokemon.stats
+        typeAdapter.mData = pokemon.types
 
 
     }

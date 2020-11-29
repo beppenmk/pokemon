@@ -14,6 +14,7 @@
     <string name="label_base_experience">Base Experience:</string>
     <string name="label_weight">Weight:</string>
     <string name="label_stats">Stats:</string>
+    <string name="label_type">Type:</string>
 
 
 </resources>

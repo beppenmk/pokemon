@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="type"
+            type="com.example.entity.Type" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:paddingLeft="@dimen/half_standard_distance"
+        android:paddingTop="@dimen/half_standard_distance"
+        android:paddingRight="@dimen/half_standard_distance"
+        android:paddingBottom="@dimen/half_standard_distance"
+        tools:background="@color/white">
+
+        <TextView
+            android:id="@+id/name_tv"
+            style="@style/list_item_text_small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{type.name}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="name" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
