@@ -11,9 +11,8 @@ interface PokemonDao {
     @Query("SELECT * FROM pokemon")
     fun getAll(): List<PokemonEntity>
 
-    @Query("SELECT * FROM pokemon WHERE id IN (:id)")
+    @Query("SELECT * FROM pokemon WHERE id == :id")
     fun loadAllByIds(id: IntArray): List<PokemonEntity>
-
 
     @Insert
     fun insertAll(vararg pokemon: PokemonEntity)

@@ -1,6 +1,5 @@
 package com.example.pokemon.ui.view.pokemon
 
-import PokemonAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,8 +17,8 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemon.R
+import com.example.pokemon.ui.adapter.PokemonAdapter
 import com.example.pokemon.ui.viewmodel.PokemonViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.getViewModel

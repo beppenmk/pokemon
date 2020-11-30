@@ -23,16 +23,16 @@ open class PokemonEntity(
     @Json(name = "base_experience") val baseExperience: Int? = null,
     val url: String? = null,
     @Json(name = "is_default") val isDefault: Boolean? = null,
-    val gameIndices: List<GameIndices> = emptyList(),
+    //@Ignore val gameIndices: List<GameIndices> = emptyList(),
     @ColumnInfo(name = "height") val height: Int? = null,
     @ColumnInfo(name = "weight") val weight: Int? = null,
     val order: Int? = null,
-    @Json(name = "location_area_encounters") val locationAreaEncounters: String? = null,
-    val moves: List<Move> = emptyList(),
+    //@Json(name = "location_area_encounters") val locationAreaEncounters: String? = null,
+    //val moves: List<Move> = emptyList(),
     val species: Species? = null,
-    val sprites: Sprites? = null,
-    val stats: List<Stats> = emptyList(),
-    val types: List<Types> = emptyList(),
+    //val sprites: Sprites? = null,
+    //val stats: List<Stats> = emptyList(),
+    //val types: List<Types> = emptyList(),
 
 
     ) {
