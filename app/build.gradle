@@ -8,6 +8,8 @@ repositories {
 
 }
 
+
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -46,6 +48,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    configurations.all() {
+        resolutionStrategy.force "org.antlr:antlr4-runtime:4.5.3"
+        resolutionStrategy.force "org.antlr:antlr4-tool:4.5.3"
     }
 }
 
