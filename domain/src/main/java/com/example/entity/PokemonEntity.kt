@@ -1,18 +1,31 @@
 package com.example.entity
 
+import androidx.room.*
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
+//TODO ADD FOREIGNTABLE
+@Entity(
+    tableName = "pokemon",
+    /*    foreignKeys = [ForeignKey(
+        entity = Stats::class,
+        parentColumns = [" "],
+        childColumns = [],
+        onDelete = ForeignKey.CASCADE
+    )],*/
+    indices = [Index("id")]
+)
+
 @JsonClass(generateAdapter = true)
 open class PokemonEntity(
-    val id: Int?,
-    val name: String? = null,
+    @PrimaryKey val id: Int?,
+    @ColumnInfo(name = "name") val name: String? = null,
     @Json(name = "base_experience") val baseExperience: Int? = null,
     val url: String? = null,
     @Json(name = "is_default") val isDefault: Boolean? = null,
     val gameIndices: List<GameIndices> = emptyList(),
-    val height: Int? = null,
-    val weight: Int? = null,
+    @ColumnInfo(name = "height") val height: Int? = null,
+    @ColumnInfo(name = "weight") val weight: Int? = null,
     val order: Int? = null,
     @Json(name = "location_area_encounters") val locationAreaEncounters: String? = null,
     val moves: List<Move> = emptyList(),
@@ -94,6 +107,7 @@ data class Stat(
     val name: String? = null,
     val url: String? = null
 )
+
 @JsonClass(generateAdapter = true)
 data class Types(
     val slot: Int? = null,
