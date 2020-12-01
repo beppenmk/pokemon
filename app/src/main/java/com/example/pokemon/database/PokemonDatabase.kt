@@ -5,12 +5,13 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.entity.PokemonDbEntity
 import com.example.entity.PokemonEntity
 import com.example.pokemon.database.dao.PokemonDao
 
 
 
-@Database(entities = [PokemonEntity::class], version = 1)
+@Database(entities = [PokemonDbEntity::class], version = 1)
 abstract class PokemonDatabase : RoomDatabase() {
 
     abstract fun pokemonDao(): PokemonDao

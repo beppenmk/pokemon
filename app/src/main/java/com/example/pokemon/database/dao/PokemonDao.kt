@@ -1,22 +1,21 @@
 package com.example.pokemon.database.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
+import com.example.entity.PokemonDbEntity
 import com.example.entity.PokemonEntity
 
 @Dao
 interface PokemonDao {
     @Query("SELECT * FROM pokemon")
-    fun getAll(): List<PokemonEntity>
+    fun getAll(): List<PokemonDbEntity>
 
     @Query("SELECT * FROM pokemon WHERE id == :id")
-    fun loadAllByIds(id: IntArray): List<PokemonEntity>
+    fun loadAllByIds(id: IntArray): List<PokemonDbEntity>
 
-    @Insert
-    fun insertAll(vararg pokemon: PokemonEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(vararg pokemon: PokemonDbEntity)
 
     @Delete
-    fun delete(pokemon: PokemonEntity)
+    fun delete(pokemon: PokemonDbEntity)
 }
