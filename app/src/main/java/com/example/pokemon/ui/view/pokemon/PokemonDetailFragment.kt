@@ -87,6 +87,7 @@ class PokemonDetailFragment : Fragment() {
 
         binding.pokemon = pokemon
 
+
         pokemon.sprites?.other?.dreamWorld?.front_default?.let {
             //GlideToVectorYou.justLoadImage(activity, Uri.parse(it), imageIv)
             GlideToVectorYou

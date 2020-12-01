@@ -7,7 +7,7 @@ import org.koin.dsl.module
 val dataModule = module {
 
     factory<PokemonRepository> {
-        PokemonRepositoryImpl(get())
+        PokemonRepositoryImpl(remoteDataSource =get(), dpDataSource = get() )
     }
 
 

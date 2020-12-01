@@ -1,12 +1,14 @@
 package com.example.reposiory
 
 
+import com.example.datasource.DBDataSource
 import com.example.datasource.RemoteDataSource
 import com.example.entity.PokemonEntity
 import com.example.repository.PokemonRepository
 
 class PokemonRepositoryImpl(
     private var remoteDataSource: RemoteDataSource,
+    private var dpDataSource: DBDataSource
 ) : PokemonRepository {
 
     override suspend fun getPokemonList(pageSize: Int): List<PokemonEntity> {
@@ -15,7 +17,10 @@ class PokemonRepositoryImpl(
     }
 
     override suspend fun getPokemonDetail(name: String): PokemonEntity {
-        return remoteDataSource.getPokemonDetail(name)
+
+        val pokemon = remoteDataSource.getPokemonDetail(name)
+        dpDataSource.insertPokemon(pokemon)
+        return pokemon
     }
 
 
