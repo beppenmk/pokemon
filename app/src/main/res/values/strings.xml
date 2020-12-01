@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">pokemon</string>
+    <string name="app_name">Pokemon</string>
+    <string name="title_activity_main_activity">Pokemon</string>
+
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="pokemon_list">Pokemon List</string>
+    <string name="pokemon_detail">Pokemon List</string>
+
+
+    <!--Pokemon detail page  -->
+    <string name="label_height">Height:</string>
+    <string name="label_base_experience">Base Experience:</string>
+    <string name="label_weight">Weight:</string>
+    <string name="label_stats">Stats:</string>
+    <string name="label_type">Type:</string>
+
+
 </resources>
